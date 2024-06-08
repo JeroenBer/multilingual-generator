@@ -67,7 +67,7 @@ namespace MultillingualFileGenerator.Targets
             targetWriter.Write(targetFilePath, targetLines);
 
             int countNew = indexedXliffTransUnitElements.Count(e => e.Target?.State == TranslationStates.New);
-            int countNeedsReview = indexedXliffTransUnitElements.Count((e => e.Target?.State != TranslationStates.NeedsReview));
+            int countNeedsReview = indexedXliffTransUnitElements.Count((e => e.Target?.State == TranslationStates.NeedsReview));
             int countTotal = indexedXliffTransUnitElements.Count();
 
             Console.WriteLine($"New={countNew}, Needs review={countNeedsReview}, Total={countTotal}");
