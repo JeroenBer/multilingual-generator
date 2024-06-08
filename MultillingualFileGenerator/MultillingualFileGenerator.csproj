@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- Dotnet Tool and packaging specific settings -->
+  <PropertyGroup>
+    <PackAsTool>true</PackAsTool>
+    <PackageId>dotnet-mlgen</PackageId>
+    <ToolCommandName>mlgen</ToolCommandName>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    
+    <PackageOutputPath>./nuget</PackageOutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <Authors>Jeroen Bernsen</Authors>
+    <Description>Multilingual File Generator, a dotnet tool to generate multilingual files for all platforms.</Description>
+
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    
+    <RepositoryUrl>https://github.com/JeroenBer/multilingual-generator</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>    
+    
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    
+    <!-- A list of tags to help the search engine to understand the content of the package -->
+    <PackageTags>multilingual, app, toolkit, dotnet</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Add a README.md next to the csproj -->
+    <None Include="README.md" Pack="true" PackagePath=""/>
+  </ItemGroup>  
+  
+</Project>
