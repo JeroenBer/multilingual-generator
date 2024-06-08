@@ -11,16 +11,10 @@ https://www.meziantou.net/publishing-a-nuget-package-following-best-practices-us
 https://weblog.west-wind.com/posts/2020/Aug/05/Using-NET-Core-Tools-to-Create-Reusable-and-Shareable-Tools-Apps
 
 
-
 ## Todo's
-- Implement github versioning
-- Squash
-- Undo private repo
-- Reply on thread
-
 - edge case for character quoting
 
-Long term
+Long term:
 - Unittests
 - Support for comments in Apple file format
 - Edge case testing for newlines and quoted characters etc
