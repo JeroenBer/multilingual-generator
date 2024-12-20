@@ -40,6 +40,6 @@ namespace MultillingualFileGenerator.Targets.Writers
         }
 
         private string AppleEscape(string text)
-            => text.Replace("\"", "\\\"");
+            => text?.Replace("\"", "\\\"");
     }
 }
