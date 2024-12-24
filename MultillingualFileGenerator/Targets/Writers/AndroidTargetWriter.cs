@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -15,6 +16,8 @@ namespace MultillingualFileGenerator.Targets.Writers
     internal class AndroidTargetWriter : ITargetWriter
     {
         private static readonly XmlSerializer _xmlSerializer = new XmlSerializer(typeof(AndroidResources));
+        private static Regex _escapeRegex = new Regex(@"(?<!\\)'", RegexOptions.Compiled);
+
 
         public void Write(string targetFilePath, List<TargetLine> targetLines)
         {
@@ -50,9 +53,12 @@ namespace MultillingualFileGenerator.Targets.Writers
             }
         }
 
-        private string Escape(string text)
+        internal string Escape(string text)
         {
-            return text?.Replace("'", "\\'");
+            if (text == null)
+                return null;
+
+            return _escapeRegex.Replace(text, "\\'");
         }
     }
 }

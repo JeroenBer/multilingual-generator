@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -14,12 +15,13 @@ namespace MultillingualFileGenerator.Targets.Writers
     // TODO Support for comments
     internal class AppleTargetWriter : ITargetWriter
     {
+        private static Regex _escapeRegex = new Regex(@"(?<!\\)""", RegexOptions.Compiled);
+
         public void Write(string targetFilePath, List<TargetLine> targetLines)
         {
             using (var fs = new FileStream(targetFilePath, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 fs.SetLength(0);
-
 
                 using (var writer = new StreamWriter(fs, Encoding.UTF8))
                 {
@@ -39,7 +41,14 @@ namespace MultillingualFileGenerator.Targets.Writers
             return line;
         }
 
-        private string AppleEscape(string text)
-            => text?.Replace("\"", "\\\"");
+
+
+        internal string AppleEscape(string text)
+        {
+            if (text == null)
+                return null;
+
+            return _escapeRegex.Replace(text, "\\\"");
+        }
     }
 }
