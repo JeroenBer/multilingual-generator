@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="btnToday">Heute</string>
+  <string name="btnCancel">Abbrechen</string>
+  <string name="Error">Fehler</string>
+</resources>

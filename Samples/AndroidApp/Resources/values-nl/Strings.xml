@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="btnToday">Vandaag</string>
+  <string name="btnCancel">Annuleren</string>
+  <string name="Error">Fout</string>
+</resources>

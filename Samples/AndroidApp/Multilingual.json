@@ -1,0 +1,25 @@
+﻿{
+  "SourceSettings": {
+    "ApplicationName": "App.Native.Droid",
+    "SourceFileFormat": "android",
+    "SourceLanguage": "en-US",
+    "SourceFile": "Resources/values/Strings.xml"
+  },
+  "TargetSettings": {
+    "TargetFileFormat": "android",
+    "XliffBaseDir": "MultilingualResources",
+    "ResourcesBaseDir": "Resources"
+  },
+  "Targets": [
+    {
+      "TargetLanguage": "de",
+      "TargetXliff": "App.Native.Droid.de.xlf",
+      "TargetResource": "values-de/Strings.xml"
+    },
+    {
+      "TargetLanguage": "nl",
+      "TargetXliff": "App.Native.Droid.nl.xlf",
+      "TargetResource": "values-nl/Strings.xml"
+    }
+  ]
+}

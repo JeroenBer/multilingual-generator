@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="xml" source-language="en" target-language="nl" original="APP.GUI.WIN10/MULTILINGUALRESOURCES/EN/RESOURCES.RESW" tool-id="MultilingualFileGenerator" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualFileGenerator" tool-name="Multilingual File Generator" tool-version="1.0.0.0" tool-company="Open Source"></tool>
+    </header>
+    <body>
+      <group id="APP.GUI.WIN10/MULTILINGUALRESOURCES/EN/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="Today" translate="yes" xml:space="preserve">
+          <source>Today</source>
+          <target state="translated">Vandaag</target>
+        </trans-unit>
+        <trans-unit id="Tomorrow" translate="yes" xml:space="preserve">
+          <source>Tomorrow</source>
+          <target state="translated">Morgen</target>
+        </trans-unit>
+        <trans-unit id="tglWork.Content" translate="yes" xml:space="preserve">
+          <source>Work</source>
+          <target state="translated">Werk</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
