@@ -3,13 +3,14 @@ using Microsoft.Extensions.Hosting;
 using MultillingualFileGenerator.Config;
 using MultillingualFileGenerator.Sources;
 using MultillingualFileGenerator.Targets;
+using MultillingualFileGenerator.Translators;
 using MultillingualFileGenerator.Xliff;
 
 namespace MultillingualFileGenerator
 {
     internal class Program
     {
-        static int Main(string[] args)
+        static async Task<int> Main(string[] args)
         {
             HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
 
@@ -23,6 +24,8 @@ namespace MultillingualFileGenerator
             builder.Services.AddSingleton<TargetService>();
             builder.Services.AddSingleton<TargetWriterFactory>();
             builder.Services.AddSingleton<SampleConfig>();
+            builder.Services.AddSingleton<TranslatorFactory>();
+            builder.Services.AddSingleton<ITranslator, ChatGptTranslator>();
 
             using IHost host = builder.Build();
 
@@ -30,7 +33,7 @@ namespace MultillingualFileGenerator
 
             try
             {
-                return main.Run(args);
+                return await main.Run(args);
             }
             catch (Exception ex)
             {

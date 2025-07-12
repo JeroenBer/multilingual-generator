@@ -145,6 +145,13 @@ An array of target languages that need to be generated (Xliff and resouce in spe
 |TargetXliff|Filename of the target Xliff|
 |TargetResource|File name of the target resource|
 
+## Automatic translation using OpenAI/ChatGPT
+Untranslate strings can be automatically translated using OpenAI/ChatGPT API.
+The translated strings will get the status "NeedsReview".
+The model is now hardcoded to "gpt-4.1-mini"
+
+To use these feature define a environment variable "OpenAIKey" with your OpenAI Api Key
+
 
 
 

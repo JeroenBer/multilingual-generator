@@ -1,0 +1,25 @@
+﻿{
+  "SourceSettings": {
+    "ApplicationName": "App.Gui.Win10",
+    "SourceFileFormat": "Windows",
+    "SourceLanguage": "en",
+    "SourceFile": "MultilingualResources/en/resources.resw"
+  },
+  "TargetSettings": {
+    "TargetFileFormat": "Windows",
+    "XliffBaseDir": "MultilingualResources",
+    "ResourcesBaseDir": "MultilingualResources"
+  },
+  "Targets": [
+    {
+      "TargetLanguage": "de",
+      "TargetXliff": "App.Gui.Win10.de.xlf",
+      "TargetResource": "de/resources.resw"
+    },
+    {
+      "TargetLanguage": "nl",
+      "TargetXliff": "App.Gui.Win10.nl.xlf",
+      "TargetResource": "nl/resources.resw"
+    }
+  ]
+}

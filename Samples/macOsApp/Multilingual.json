@@ -1,0 +1,25 @@
+﻿{
+  "SourceSettings": {
+    "ApplicationName": "App.Native.Mac",
+    "SourceFileFormat": "apple",
+    "SourceLanguage": "en",
+    "SourceFile": "Resources/en.lproj/Localizable.strings"
+  },
+  "TargetSettings": {
+    "TargetFileFormat": "apple",
+    "XliffBaseDir": "MultilingualResources",
+    "ResourcesBaseDir": "Resources"
+  },
+  "Targets": [
+    {
+      "TargetLanguage": "de",
+      "TargetXliff": "App.Native.Mac.de.xlf",
+      "TargetResource": "de.lproj/Localizable.strings"
+    },
+    {
+      "TargetLanguage": "nl",
+      "TargetXliff": "App.Native.Mac.nl.xlf",
+      "TargetResource": "nl.lproj/Localizable.strings"
+    }
+  ]
+}

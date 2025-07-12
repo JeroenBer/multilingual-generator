@@ -1,6 +1,7 @@
 ﻿using MultillingualFileGenerator.Config;
 using MultillingualFileGenerator.Sources.Model;
 using MultillingualFileGenerator.Targets.Model;
+using MultillingualFileGenerator.Translators;
 using MultillingualFileGenerator.Util;
 using MultillingualFileGenerator.Xliff;
 using System;
@@ -17,15 +18,17 @@ namespace MultillingualFileGenerator.Targets
         private readonly XliffReader _xliffReader;
         private readonly XliffWriter _xliffWriter;
         private readonly TargetWriterFactory _targetWriterFactory;
+        private readonly TranslatorFactory _translatorFactory;
 
-        public TargetService(XliffReader xliffReader, XliffWriter xliffWriter, TargetWriterFactory targetWriterFactory)
+        public TargetService(XliffReader xliffReader, XliffWriter xliffWriter, TargetWriterFactory targetWriterFactory, TranslatorFactory translatorFactory)
         {
             _xliffReader = xliffReader;
             _xliffWriter = xliffWriter;
             _targetWriterFactory = targetWriterFactory;
+            _translatorFactory = translatorFactory;
         }
 
-        public void ProcessTarget(SourceInput sourceInput, TargetSettings targetSettings, Target target, string workingDir)
+        public async Task ProcessTarget(SourceInput sourceInput, TargetSettings targetSettings, Target target, string workingDir)
         {
             Console.Write($"Processing target \"{target.TargetLanguage}\": ");
 
@@ -43,7 +46,7 @@ namespace MultillingualFileGenerator.Targets
             }
 
             // Update existing Xliff with new source input
-            var hasChanges = UpdateXliffTransUnitElements(indexedXliffTransUnitElements, sourceInput);
+            var hasChanges = await UpdateXliffTransUnitElements(indexedXliffTransUnitElements, sourceInput, target);
 
             // Write new Xliff
             var newXliffFile = CreateUpdatedXliffFile(sourceInput, indexedXliffTransUnitElements, target);
@@ -73,7 +76,7 @@ namespace MultillingualFileGenerator.Targets
             Console.WriteLine($"New={countNew}, Needs review={countNeedsReview}, Total={countTotal}");
         }
 
-        private bool UpdateXliffTransUnitElements(IndexedList<XliffTransUnitElement> indexedXliffTransUnitElements, SourceInput sourceInput)
+        private async Task<bool> UpdateXliffTransUnitElements(IndexedList<XliffTransUnitElement> indexedXliffTransUnitElements, SourceInput sourceInput, Target target)
         {
             var hasChanges = false;
             // always keep the order in the Xliff as leading
@@ -87,6 +90,9 @@ namespace MultillingualFileGenerator.Targets
                     hasChanges = true;
                 }
             }
+
+            // Create translator
+            var translator = _translatorFactory.GetTranslator(target.TargetLanguage);
 
             // Now update or add new elements by going through the source list
             foreach (var sourceLine in sourceInput.Lines)
@@ -110,32 +116,75 @@ namespace MultillingualFileGenerator.Targets
                                 Priority = "2",
                                 Value = "Please verify the translation’s accuracy as the source string was updated after it was translated.",
                             };
+
+                            // Try to translate for new source
+                            var translation = await translator?.Translate(sourceLine.Value);
+                            if (translation != null)
+                            {
+                                transUnitElement.Target.Value = translation;
+                            }
                         }
+
                         hasChanges = true;
                     }
                     else
                     {
                         transUnitElement.Source.Value ??= string.Empty; // If null then put in empty string
                     }
+
+                    // Try to translate if state is NEW
+                    if (transUnitElement.Target.State == TranslationStates.New)
+                    {
+                        var translation = await translator?.Translate(sourceLine.Value);
+                        if (translation != null)
+                        {
+                            transUnitElement.Target.State = TranslationStates.NeedsReview;
+                            transUnitElement.Target.Value = translation;
+                        }
+                    }
                 }
                 else
                 {
-                    // Add
-                    indexedXliffTransUnitElements.Add(new XliffTransUnitElement
+                    var translation = await translator?.Translate(sourceLine.Value);
+                    if (translation == null)
                     {
-                        ID = sourceLine.Name,
-                        Translate = "yes",
-                        Space = "preserve",
-                        Source = new XliffSourceElement
+                        // Add untranslated
+                        indexedXliffTransUnitElements.Add(new XliffTransUnitElement
                         {
-                            Value = sourceLine.Value,
-                        },
-                        Target = new XliffTargetElement
+                            ID = sourceLine.Name,
+                            Translate = "yes",
+                            Space = "preserve",
+                            Source = new XliffSourceElement
+                            {
+                                Value = sourceLine.Value,
+                            },
+                            Target = new XliffTargetElement
+                            {
+                                State = TranslationStates.New,
+                                Value = sourceLine.Value ?? string.Empty,
+                            }
+                        });
+                    }
+                    else
+                    {
+                        // Add translated
+                        indexedXliffTransUnitElements.Add(new XliffTransUnitElement
                         {
-                            State = TranslationStates.New,
-                            Value = sourceLine.Value ?? string.Empty,
-                        }
-                    });
+                            ID = sourceLine.Name,
+                            Translate = "yes",
+                            Space = "preserve",
+                            Source = new XliffSourceElement
+                            {
+                                Value = sourceLine.Value,
+                            },
+                            Target = new XliffTargetElement
+                            {
+                                State = TranslationStates.NeedsReview,
+                                Value = translation,
+                            }
+                        });
+                    }
+
                     hasChanges = true;
                 }
             }

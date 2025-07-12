@@ -18,3 +18,10 @@ Long term:
 - Unittests
 - Support for comments in Apple file format
 - Edge case testing for newlines and quoted characters etc
+
+
+# OpenAI
+API Key: https://platform.openai.com/settings/organization/api-keys
+Billing: https://platform.openai.com/settings/organization/billing/overview
+Usage: https://platform.openai.com/settings/organization/usage
+Pricing: https://openai.com/api/pricing/

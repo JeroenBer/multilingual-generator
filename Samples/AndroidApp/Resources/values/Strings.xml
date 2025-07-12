@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="btnToday">Today</string>
+  <string name="btnCancel">Cancel</string>
+  <string name="Error">There is an error</string>
+  <string name="questionAreYouSure">Are you sure ?</string>
+  <string name="txtFeatureDescription">- Share an appointment.\n
+\n
+- Support for multiple iCloud/CalDav accounts.\n
+\n
+- New options like appointment length, iCloud/CalDav background sync interval and more.</string>
+  <string name="ErrorAddingAccount">Error adding your {0} account: {1}</string>  
+</resources>

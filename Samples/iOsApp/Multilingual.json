@@ -1,0 +1,25 @@
+﻿{
+  "SourceSettings": {
+    "ApplicationName": "App.Native.iOS",
+    "SourceFileFormat": "apple",
+    "SourceLanguage": "en",
+    "SourceFile": "Resources/en.lproj/Localizable.strings"
+  },
+  "TargetSettings": {
+    "TargetFileFormat": "apple",
+    "XliffBaseDir": "MultilingualResources",
+    "ResourcesBaseDir": "Resources"
+  },
+  "Targets": [
+    {
+      "TargetLanguage": "de",
+      "TargetXliff": "App.Native.iOS.de.xlf",
+      "TargetResource": "de.lproj/Localizable.strings"
+    },
+    {
+      "TargetLanguage": "nl",
+      "TargetXliff": "App.Native.iOS.nl.xlf",
+      "TargetResource": "nl.lproj/Localizable.strings"
+    }
+  ]
+}

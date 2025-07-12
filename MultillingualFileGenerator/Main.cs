@@ -28,7 +28,7 @@ internal class Main
         _sampleConfig = sampleConfig;
     }
 
-    public int Run(string[] args)
+    public async Task<int> Run(string[] args)
     {
         Console.WriteLine($"Multilingual file generator v{ToolVersion.GetVersion()}");
 
@@ -94,7 +94,7 @@ internal class Main
 
         foreach(var target in multilingualConfig.Targets)
         {
-            _xliffService.ProcessTarget(sourceInput, multilingualConfig.TargetSettings, target, workingDir);
+            await _xliffService.ProcessTarget(sourceInput, multilingualConfig.TargetSettings, target, workingDir);
         }
 
         return 0;

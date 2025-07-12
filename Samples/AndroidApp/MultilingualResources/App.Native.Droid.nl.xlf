@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="xml" source-language="en-US" target-language="nl" original="APP.NATIVE.DROID/RESOURCES/VALUES/STRINGS.XML" tool-id="MultilingualFileGenerator" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualFileGenerator" tool-name="Multilingual File Generator" tool-version="1.0.0.0" tool-company="Open Source"></tool>
+    </header>
+    <body>
+      <group id="APP.NATIVE.DROID/RESOURCES/VALUES/STRINGS.XML" datatype="resx">
+        <trans-unit id="btnToday" translate="yes" xml:space="preserve">
+          <source>Today</source>
+          <target state="translated">Vandaag</target>
+        </trans-unit>
+        <trans-unit id="btnCancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Annuleren</target>
+        </trans-unit>
+        <trans-unit id="Error" translate="yes" xml:space="preserve">
+          <source>There is an error</source>
+          <target state="needs-review-translation">Er is een fout opgetreden</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="txtFeatureDescription" translate="yes" xml:space="preserve">
+          <source>- Share an appointment.\n
+\n
+- Support for multiple iCloud/CalDav accounts.\n
+\n
+- New options like appointment length, iCloud/CalDav background sync interval and more.</source>
+          <target state="needs-review-translation">- Deel een afspraak.\n
+\n
+- Ondersteuning voor meerdere iCloud/CalDav-accounts.\n
+\n
+- Nieuwe opties zoals afspraakduur, iCloud/CalDav achtergrond synchronisatie-interval en meer.</target>
+        </trans-unit>
+        <trans-unit id="ErrorAddingAccount" translate="yes" xml:space="preserve">
+          <source>Error adding your {0} account: {1}</source>
+          <target state="needs-review-translation">Fout bij het toevoegen van uw {0} account: {1}</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
