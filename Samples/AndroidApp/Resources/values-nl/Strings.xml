@@ -2,5 +2,12 @@
 <resources>
   <string name="btnToday">Vandaag</string>
   <string name="btnCancel">Annuleren</string>
-  <string name="Error">Fout</string>
+  <string name="Error">Er is een fout opgetreden</string>
+  <string name="questionAreYouSure">Bent u zeker?</string>
+  <string name="txtFeatureDescription">- Deel een afspraak.\n
+\n
+- Ondersteuning voor meerdere iCloud/CalDav-accounts.\n
+\n
+- Nieuwe opties zoals afspraakduur, iCloud/CalDav achtergrond synchronisatie-interval en meer.</string>
+  <string name="ErrorAddingAccount">Fout bij het toevoegen van uw {0} account: {1}</string>
 </resources>

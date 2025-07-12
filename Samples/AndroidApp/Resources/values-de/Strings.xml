@@ -2,5 +2,12 @@
 <resources>
   <string name="btnToday">Heute</string>
   <string name="btnCancel">Abbrechen</string>
-  <string name="Error">Fehler</string>
+  <string name="Error">Es gibt einen Fehler</string>
+  <string name="questionAreYouSure">Sind Sie sicher?</string>
+  <string name="txtFeatureDescription">- Termin teilen.\n
+\n
+- Unterstützung für mehrere iCloud/CalDav-Konten.\n
+\n
+- Neue Optionen wie Terminlänge, iCloud/CalDav-Hintergrund-Synchronisierungsintervall und mehr.</string>
+  <string name="ErrorAddingAccount">Fehler beim Hinzufügen Ihres {0} Kontos: {1}</string>
 </resources>
