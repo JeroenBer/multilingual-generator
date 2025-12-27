@@ -145,12 +145,49 @@ An array of target languages that need to be generated (Xliff and resouce in spe
 |TargetXliff|Filename of the target Xliff|
 |TargetResource|File name of the target resource|
 
-## Automatic translation using OpenAI/ChatGPT
-Untranslate strings can be automatically translated using OpenAI/ChatGPT API.
-The translated strings will get the status "NeedsReview".
-The model is now hardcoded to "gpt-4.1-mini"
+## Machine Translations
+You can use either the OpenAI/ChatGPT API or the Azure Translator API to automatically translate untranslated strings.
+Select one of the options by providing the necessary API credentials as described below. If both are provided, 
+the OpenAI/ChatGPT option will take precedence.
 
-To use these feature define a environment variable "OpenAIKey" with your OpenAI Api Key
+### Automatic translation using OpenAI/ChatGPT
+Untranslated strings can be automatically translated using the OpenAI/ChatGPT API.
+The translated strings will get the status "NeedsReview".
+The model is now hardcoded to "gpt-4.1-mini".
+
+To use this feature, you can specify the OpenAI API key in one of the following ways:
+
+1. **Environment Variable**: Define an environment variable `OpenAIKey` with your OpenAI API Key.
+2. **application.json File**: Create an `application.json` file in the same directory as your `Multilingual.config` file and include the following entry:
+
+```json
+{
+  "OpenAIKey": "your-openai-api-key"
+}
+```
+
+If both are specified, the key in the `application.json` file takes precedence.
+
+### Automatic translation using Azure Translator
+Untranslated strings can be automatically translated using Azure Translator.
+The translated strings will get the status "NeedsReview".
+
+To use this feature, you can specify the Azure Translator credentials in one of the following ways:
+
+1. **Environment Variables**: Define the following environment variables:
+   - `AzureTranslatorKey`: Your Azure Translator API Key.
+   - `AzureRegion`: The Azure region for your Translator service.
+
+2. **application.json File**: Create an `application.json` file in the same directory as your `Multilingual.config` file and include the following entries:
+
+```json
+{
+  "AzureTranslatorKey": "your-azure-translator-key",
+  "AzureRegion": "your-azure-region"
+}
+```
+
+If both are specified, the values in the `application.json` file take precedence.
 
 
 

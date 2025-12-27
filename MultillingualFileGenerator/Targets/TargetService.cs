@@ -92,7 +92,7 @@ namespace MultillingualFileGenerator.Targets
             }
 
             // Create translator
-            var translator = _translatorFactory.GetTranslator(target.TargetLanguage);
+            var translator = _translatorFactory.GetTranslator(sourceInput.SourceLanguage,target.TargetLanguage);
 
             // Now update or add new elements by going through the source list
             foreach (var sourceLine in sourceInput.Lines)
